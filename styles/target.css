@@ -21,3 +21,15 @@
     width: calc(100%/3);
     text-align: center;
 }
+
+
+.deleteicon{
+    width: 20px;
+    height:20px;
+    cursor: pointer;
+}
+.editicon{
+    width: 20px;
+    height:20px;
+    cursor: pointer;
+}

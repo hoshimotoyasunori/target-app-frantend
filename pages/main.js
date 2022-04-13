@@ -14,7 +14,7 @@ export default function MainPage() {
   return (
     <Layout title="Main">
       <div>
-        <Link href="/maintarget">
+        <Link href="/target">
           <a>Target-List</a>
         </Link>
       </div>
