@@ -3,23 +3,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 .target_container{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 90vw;
+    width: calc(90vw/3);
+    border: solid 3px;
 }
-.target_box{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: calc(100%/3);
-    border: solid 1px;
-}
-.target_box p{
+.square{
     width: calc(100%/3);
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px;
+    cursor: pointer;
+}
+.square:hover{
+    background-color: cadetblue;
+}
+.inner{
+    width: 0px;
+    height: 0px;
+    padding-bottom: calc(100%/3);
 }
 
 

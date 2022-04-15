@@ -14,8 +14,8 @@ export default function MainPage() {
   return (
     <Layout title="Main">
       <div>
-        <Link href="/target">
-          <a>Target-List</a>
+        <Link href="/large">
+          <a>Large-List</a>
         </Link>
       </div>
       <span onClick={logout}>

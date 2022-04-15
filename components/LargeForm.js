@@ -4,13 +4,13 @@ import Cookie from "universal-cookie";
 
 const cookie = new Cookie();
 
-export default function TargetForm({ targetCreated }) {
-  const { selectedtarget, setSelectedtarget } = useContext(StateContext);
+export default function LargeForm({ largeCreated }) {
+  const { selectedlarge, setSelectedlarge } = useContext(StateContext);
   const create = async (e) => {
     e.preventDefault();
-    await fetch(`${process.env.NEXT_PUBLIC_RESTAPI_URL}api/targets/`, {
+    await fetch(`${process.env.NEXT_PUBLIC_RESTAPI_URL}api/larges/`, {
       method: "POST",
-      body: JSON.stringify({ target: selectedtarget.target }),
+      body: JSON.stringify({ large: selectedlarge.large }),
       headers: {
         "Content-Type": "application/json",
         Authorization: `JWT ${cookie.get("access_token")}`,
@@ -20,16 +20,16 @@ export default function TargetForm({ targetCreated }) {
         alert("JWT Token not valid");
       }
     });
-    setSelectedtarget({ id: 0, target: "" });
-    targetCreated();
+    setSelectedlarge({ id: 0, large: "" });
+    largeCreated();
   };
   const update = async (e) => {
     e.preventDefault();
     await fetch(
-      `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/targets/${selectedtarget.id}/`,
+      `${process.env.NEXT_PUBLIC_RESTAPI_URL}api/larges/${selectedlarge.id}/`,
       {
         method: "PUT",
-        body: JSON.stringify({ target: selectedtarget.target }),
+        body: JSON.stringify({ large: selectedlarge.large }),
         headers: {
           "Content-Type": "application/json",
           Authorization: `JWT ${cookie.get("access_token")}`,
@@ -40,23 +40,21 @@ export default function TargetForm({ targetCreated }) {
         alert("JWT Token not valid");
       }
     });
-    setSelectedtarget({ id: 0, target: "" });
-    targetCreated();
+    setSelectedlarge({ id: 0, large: "" });
+    largeCreated();
   };
   return (
     <div>
-      <form onSubmit={selectedtarget.id !== 0 ? update : create}>
+      <form onSubmit={selectedlarge.id !== 0 ? update : create}>
         <input
           type="text"
-          value={selectedtarget.target}
+          value={selectedlarge.large}
           onChange={(e) =>
-            setSelectedtarget({ ...selectedtarget, target: e.target.value })
+            setSelectedlarge({ ...selectedlarge, large: e.target.value })
           }
         />
-        <button
-          type="submit"
-        >
-          {selectedtarget.id !== 0 ? "update" : "create"}
+        <button type="submit">
+          {selectedlarge.id !== 0 ? "update" : "create"}
         </button>
       </form>
     </div>
