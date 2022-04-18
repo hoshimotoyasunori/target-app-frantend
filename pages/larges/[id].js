@@ -27,7 +27,7 @@ export default function Large({ staticLarge, id }) {
   if (router.isFallback || !large) {
     return <div>Loading...</div>;
   }
-
+  // console.log(large)
   return (
       <Layout title={large.large}>
         <p>

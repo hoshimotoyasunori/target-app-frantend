@@ -5,10 +5,10 @@ import { StateContext } from "../context/StateContext";
 
 const cookie = new Cookie();
 
-export default function Large({ large, largeDeleted }) {
-  const { setSelectedlarge } = useContext(StateContext);
-  const deletelarge = async () => {
-    await fetch(`${process.env.NEXT_PUBLIC_RESTAPI_URL}api/larges/${large.id}`, {
+export default function Task({ task, taskDeleted }) {
+  const { setSelectedtask } = useContext(StateContext);
+  const deletetask = async () => {
+    await fetch(`${process.env.NEXT_PUBLIC_RESTAPI_URL}api/tasks/${task.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -19,18 +19,19 @@ export default function Large({ large, largeDeleted }) {
         alert("JWT Token not valid");
       }
     });
-    largeDeleted();
+    taskDeleted();
   };
+  // console.log(related_middle.all())
   return (
     <div>
-      <span>{large.id}</span>
+      <span>{task.id}</span>
       {" : "}
-      <Link href={`/larges/${large.id}`}>
-        <a>{large.large}</a>
+      <Link href={`/tasks/${task.id}`}>
+        <a>{task.task}</a>
       </Link>
       <div>
         <svg
-          onClick={() => setSelectedlarge(large)}
+          onClick={() => setSelectedtask(task)}
           className="editicon"
           fill="none"
           stroke="currentColor"
@@ -46,7 +47,7 @@ export default function Large({ large, largeDeleted }) {
         </svg>
         <svg
           className="deleteicon"
-          onClick={deletelarge}
+          onClick={deletetask}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
